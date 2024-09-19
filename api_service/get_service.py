@@ -23,6 +23,6 @@ def _get_2022_stats():
 
 
 def get_NBA_player_models_of_last_three_seasons():
-    three_year_stats = _get_2022_stats + _get_2023_stats + _get_2024_stats
+    three_year_stats = _get_2022_stats() + _get_2023_stats() + _get_2024_stats()
     return convert_utils.map_list_of_json_to_list_of_players(three_year_stats)
 

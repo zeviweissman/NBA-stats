@@ -9,8 +9,6 @@ def setup_database():
     yield
 
 
-
-
 def test_get_all_players(setup_database):
     players = player_repository.get_all_players()
     assert len(players) == 5212
