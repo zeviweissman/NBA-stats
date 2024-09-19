@@ -14,7 +14,7 @@ def calc_ppg_average_from_list_of_players(players: List[Player]) -> float:
     return pipe(
         players,
         partial(map, attrgetter("ppg")),
-        statistics.mean
+        statistics.mean,
     )
 
 def calc_ppg_ratio(player: Player, ppg_average: float):

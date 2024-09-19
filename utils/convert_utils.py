@@ -2,6 +2,7 @@ from model.Player import Player
 from typing import List
 from utils.calc_utils import *
 from toolz import pipe, partial
+from copy  import deepcopy
 def parse_json_to_relvant_info(json):
     return {
       "player_name":json.get("playerName"),
@@ -30,10 +31,11 @@ def map_list_of_json_to_list_of_players(json):
     )
 
 
+map_to_player_model = lambda li: map(lambda player: Player(**player), li)
 
 
-def return_players_with_ppg_ratio(players: List[Player]):
-    average_ppg = calc_ppg_average_from_list_of_players(players)
+def get_players_with_ppg_ratio(players):
+    average_ppg = calc_ppg_average_from_list_of_players(deepcopy(players))
     return pipe(
         players,
         partial(map,lambda player:(player, calc_ppg_ratio(player, average_ppg))),
@@ -174,5 +176,4 @@ players = [
         player_id_str="simonma01"
     )
 ]
-
 

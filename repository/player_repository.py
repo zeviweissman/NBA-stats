@@ -34,13 +34,13 @@ def add_player_range(players: List[Player]):
         add_player(player)
 
 
-def get_all_players() -> List[Player]:
+def get_all_players():
     return get_from_database(
         "SELECT * FROM players"
     )
 
 @curry
-def get_all_players_by_param(param, param_value) -> List[Player]:
+def get_all_players_by_param(param, param_value):
     valid_params = ['player_name', 'position', 'games', 'three_percent', 'two_percent', 'atr', 'ppg', 'points', 'team', 'season', 'player_id_str', 'player_id']
     if param not in valid_params:
         raise Exception("invalid sql coulmn try a different one")
@@ -49,13 +49,13 @@ def get_all_players_by_param(param, param_value) -> List[Player]:
         (param_value,)
     )
 
-get_all_players_by_season = get_all_players_by_param('season')
-get_all_players_by_postion = get_all_players_by_param('position')
 
 
-def get_player_by_id(player_id) -> Player:
+
+def get_player_by_id(player_id):
     return get_from_database(
-        "SELECT * FROM players WHERE player_id = %s", (player_id,)
+        "SELECT * FROM players WHERE player_id = %s",
+        (player_id,)
     )
 
 

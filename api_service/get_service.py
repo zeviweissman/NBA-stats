@@ -1,7 +1,7 @@
 import requests
 from utils import convert_utils
 
-_generate_NBA_stats_url_by_year = lambda year: f"http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?season={year}&&pageSize=1000"
+_generate_NBA_stats_url_by_year = lambda year: f"http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?season={year}&&pageSize=150"
 
 
 
