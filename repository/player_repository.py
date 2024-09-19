@@ -1,11 +1,10 @@
 from model.Player import Player
 from repository.database import get_from_database, change_in_data_base
 from typing import List
-from api_service.get_service import get_NBA_player_models_of_last_three_seasons
 from toolz import curry
 
 
-def add_player(player: Player) -> str:
+def add_player(player: Player) -> int:
     new_id = change_in_data_base(
         """
         INSERT INTO players (player_name, position, games, three_percent, two_percent, atr, ppg, points, team, season, player_id_str) 
@@ -13,17 +12,17 @@ def add_player(player: Player) -> str:
         RETURNING player_id
         """,
         (
-            player.playerName,
+            player.player_name,
             player.position,
             player.games,
-            player.threePercent,
-            player.twoPercent,
+            player.three_percent,
+            player.two_percent,
             player.atr,
             player.ppg,
             player.points,
             player.team,
             player.season,
-            player.playerId_str
+            player.player_id_str
         )
     )
     return new_id['player_id'] if new_id else None
@@ -60,4 +59,4 @@ def get_player_by_id(player_id) -> Player:
     )
 
 
-
+print(len(get_all_players()))

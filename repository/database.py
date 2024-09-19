@@ -5,6 +5,9 @@ from config.config import POSTGRES_URI, NBA_DB_URI
 
 
 
+
+
+
 create_nba_db_query = "CREATE DATABASE nba_db"
 drop_nba_db_query = "DROP DATABASE nba_db"
 create_players_table_query = """
@@ -101,6 +104,7 @@ def create_db_if_not_exist():
     except OperationalError:
             create_db()
             create_tables()
+
 
 
 create_db_if_not_exist()
