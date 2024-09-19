@@ -16,6 +16,6 @@ def delete_team_by_id(team_id):
 def compare_two_teams(team1_id, team2_id):
     team1 = get_team_by_id(team1_id)
     team2 = get_team_by_id(team2_id)
-    parse_info_of_two_teams(team1, team2)
+    return sorted(parse_info_of_two_teams(team1, team2), key=lambda team:team.team_ppg_ratio, reverse=True)
 
-compare_two_teams(1,2)
+

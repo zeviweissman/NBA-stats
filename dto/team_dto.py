@@ -1,11 +1,13 @@
 from dataclasses import dataclass
+from model.Player import Player
 
 @dataclass
 class TeamDTO:
   team_name: str
-  sg_player_id: int
-  sf_player_id: int
-  pg_player_id: int
-  pf_player_id: int
-  c_player_id: int
-  team_id: int = None
+  team_ppg_ratio: float
+  sg_player: Player
+  sf_player: Player
+  pg_player: Player
+  pf_player: Player
+  c_player: Player
+  team_id: int
