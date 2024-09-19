@@ -2,14 +2,15 @@ from dataclasses import dataclass
 
 @dataclass
 class Player:
-    playerName: str
-    position: str
-    games: int
-    threePercent: float
-    twoPercent: float
+    player_id_str: str
+    player_name: str
     atr: int
     ppg: int
-    points: int
     team: str
     season: int
-    playerId: str
+    points: int
+    position: str
+    games: int
+    three_percent: float
+    two_percent: float
+    player_id: int = None
