@@ -43,6 +43,14 @@ def get_players_with_ppg_ratio(players):
     )
 
 
+def parse_info_of_two_teams(team1, team2):
+    team1_ppg_ratio = sum([player.get("ppg_ratio") for player in team1])
+    team2_ppg_ratio = sum([player.get("ppg_ratio") for player in team2])
+    print(team1_ppg_ratio)
+    print(team2_ppg_ratio)
+
+
+
 
 players = [
     Player(
