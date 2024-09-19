@@ -50,6 +50,18 @@ def get_all_players_by_param(param, param_value):
     )
 
 
+@curry
+def get_all_players_by_two_params(param1, param2, param_value1, parm_value2):
+    valid_params = ['player_name', 'position', 'games', 'three_percent', 'two_percent', 'atr', 'ppg', 'points', 'team', 'season', 'player_id_str', 'player_id']
+    if param1 not in valid_params or param2 not in valid_params:
+        raise Exception("invalid sql coulmn try a different one")
+    return get_from_database(
+        f"SELECT * FROM players WHERE {param1} = %s AND {param2} = %s",
+        (param_value1, parm_value2)
+    )
+
+
+
 
 
 def get_player_by_id(player_id):

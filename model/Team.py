@@ -1,8 +1,7 @@
 from dataclasses import dataclass
-from typing import List
-from model.Player import Player
 
-class team:
+@dataclass
+class Team:
     team_name: str
     SG_player_id: int
     SF_player_id: int

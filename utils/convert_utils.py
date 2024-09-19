@@ -38,7 +38,7 @@ def get_players_with_ppg_ratio(players):
     average_ppg = calc_ppg_average_from_list_of_players(deepcopy(players))
     return pipe(
         players,
-        partial(map,lambda player:(player, calc_ppg_ratio(player, average_ppg))),
+        partial(map,lambda player:(player, {"ppgRatio":calc_ppg_ratio(player, average_ppg)})),
         list
     )
 

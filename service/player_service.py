@@ -24,6 +24,14 @@ def get_all_players_by_postion(position: str):
         map_to_player_model,
         get_players_with_ppg_ratio
     )
+def get_all_players_by_postion_and_season(position: str, season: int):
+    return pipe(
+        player_repository.get_all_players_by_two_params('position', 'season', position, season),
+        map_to_player_model,
+        get_players_with_ppg_ratio
+    )
+
+
 
 
 def get_player_by_id(player_id):
