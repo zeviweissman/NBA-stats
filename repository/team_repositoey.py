@@ -2,13 +2,13 @@ from repository.database import get_from_database, change_in_data_base
 from typing import List
 from model.Team import Team
 def create_team(team: Team):
-    new_id = change_in_data_base(
+    return change_in_data_base(
         """INSERT INTO teams (team_name, sg_player_id, sf_player_id, pg_player_id , pf_player_id, c_player_id) 
-        VALUES (%s, %s, %s, %s, %s, %s) RETURNING team_id
+        VALUES (%s, %s, %s, %s, %s, %s) RETURNING *
         """,
-        (team.team_name, team.SG_player_id, team.SF_player_id, team.PG_player_id, team.PF_player_id, team.C_player_id)
-    )
-    return new_id['team_id'] if new_id else None
+        (team.team_name, team.sg_player_id, team.sf_player_id, team.pg_player_id, team.pf_player_id, team.c_player_id)
+    ) or None
+
 
 def get_team_by_id(team_id):
     return get_from_database(
