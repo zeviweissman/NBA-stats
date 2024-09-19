@@ -59,4 +59,3 @@ def get_player_by_id(player_id) -> Player:
     )
 
 
-print(len(get_all_players()))

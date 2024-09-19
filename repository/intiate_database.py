@@ -7,4 +7,3 @@ def seed_players():
     add_player_range(players)
 
 
-seed_players()
