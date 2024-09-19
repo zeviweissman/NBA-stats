@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS players (
     ppg FLOAT NOT NULL,
     points INTEGER NOT NULL,
     team VARCHAR(3) NOT NULL,
-    season INTEGER NOT NULL
+    season INTEGER NOT NULL,
+    ppg_ratio FLOAT NOT NULL
 );
 """
 

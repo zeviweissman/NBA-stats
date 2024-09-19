@@ -7,8 +7,8 @@ from toolz import curry
 def add_player(player: Player) -> int:
     new_id = change_in_data_base(
         """
-        INSERT INTO players (player_name, position, games, three_percent, two_percent, atr, ppg, points, team, season, player_id_str) 
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) 
+        INSERT INTO players (player_name, position, games, three_percent, two_percent, atr, ppg, points, team, season, player_id_str, ppg_ratio) 
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) 
         RETURNING player_id
         """,
         (
@@ -22,7 +22,8 @@ def add_player(player: Player) -> int:
             player.points,
             player.team,
             player.season,
-            player.player_id_str
+            player.player_id_str,
+            player.ppg_ratio
         )
     )
     return new_id['player_id'] if new_id else None

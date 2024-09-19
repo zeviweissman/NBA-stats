@@ -1,4 +1,5 @@
 from model.Player import Player
+from dataclasses import asdict
 from typing import List
 from utils.calc_utils import *
 from toolz import pipe, partial
@@ -22,12 +23,11 @@ def parse_json_to_relvant_info(json):
 def convert_from_json_to_player(json):
     return Player(**json)
 
-def map_list_of_json_to_list_of_players(json):
+def map_json_to_player_models(json):
     return pipe(
         json,
         partial(map, parse_json_to_relvant_info),
         partial(map, convert_from_json_to_player),
-        list
     )
 
 
@@ -38,7 +38,7 @@ def get_players_with_ppg_ratio(players):
     average_ppg = calc_ppg_average_from_list_of_players(deepcopy(players))
     return pipe(
         players,
-        partial(map,lambda player:(player, {"ppgRatio":calc_ppg_ratio(player, average_ppg)})),
+        partial(map,lambda player:(Player(**{**asdict(player),"ppg_ratio":calc_ppg_ratio(player, average_ppg)}))),
         list
     )
 

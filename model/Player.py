@@ -13,4 +13,5 @@ class Player:
     games: int
     three_percent: float
     two_percent: float
+    ppg_ratio: float = None
     player_id: int = None
